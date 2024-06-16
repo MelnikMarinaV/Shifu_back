@@ -1,6 +1,5 @@
-from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
-from lessons.models import Course, Lesson
+from lessons.models import Course, Lesson, Task
 from django.views.decorators.csrf import csrf_exempt
 
 def courses(request):
@@ -19,4 +18,18 @@ def lessons(request, course_id):
             'lessons': [
                 {'id': lesson.id, 'title': lesson.title} for lesson in lessons
             ]
+        })
+
+def tasks(request, lesson_id):
+    lesson = Lesson.objects.get(id=lesson_id)
+    tasks = Task.objects.filter(lesson=lesson)
+    return JsonResponse({
+            'tasks': [
+                {'id': task.id, 
+                 'title': task.title,
+                 'description': task.task_description
+                } for task in tasks
+            ],
+            'description': lesson.description,
+            'title': lesson.title
         })

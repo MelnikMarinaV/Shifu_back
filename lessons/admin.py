@@ -18,7 +18,7 @@ class LessonAdmin(admin.ModelAdmin):
             return '-'  # Если курс не указан
     get_course_title.short_description = 'Course'  # Название колонки в административной панели
 
-@admin.register(Task)
+@admin.register(Task) #регистрация модели задания
 class TaskAdmin(admin.ModelAdmin):
     pass
 
