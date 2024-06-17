@@ -44,4 +44,17 @@ def get_audio(request, task_id):
             audio = f.read()
     return HttpResponse(audio, content_type='audio/mpeg')
 
+@csrf_exempt
+def upload_audio(request, task_id):
+    if 'audio' in request.FILES:
+        audio_file = request.FILES['audio']
+        path= f'C:/Users/Admin/Documents/back/lessons/static/submissions/task{task_id}.mp3'
+        print(audio_file.size)
+        with open(path, 'wb') as destination:
+            for chunk in audio_file.chunks():
+                destination.write(chunk)  
+        return JsonResponse({'message': 'Audio file saved successfully'})
+    else:
+        return JsonResponse({'error': 'No audio file found in the request'}, status=400)
+
 
