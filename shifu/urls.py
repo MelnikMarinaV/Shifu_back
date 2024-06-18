@@ -12,6 +12,6 @@ urlpatterns = [
     path('api/courses/', views.courses, name='courses'), # определение URL-шаблона для получения списка курсов
     path('api/lessons/<int:course_id>', views.lessons), #Определение URL-шаблона для получения уроков, относящихся к конкретному курсу
     path('api/tasks/<int:lesson_id>', views.tasks),# определение URL-шаблона для получения заданий, относящихся к определённому уроку
-    path('get_audio/<int:task_id>', views.get_audio),
-    path('upload_audio/<int:task_id>', views.upload_audio),
+    path('get_audio/<int:task_id>', views.get_audio), #получение аудиофайла, связанного с заданием
+    path('upload_audio/<int:task_id>', views.upload_audio),#загрузка аудио, записанного пользователем
 ]

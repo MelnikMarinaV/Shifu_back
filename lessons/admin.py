@@ -22,7 +22,7 @@ class LessonAdmin(admin.ModelAdmin):
 class TaskAdmin(admin.ModelAdmin):
     pass
 
-@admin.register(TaskSubmission)
-class TaskSubmissionAdmin(admin.ModelAdmin):
-    list_filter = ["task"]
-    list_display = ['task']
+# @admin.register(TaskSubmission)
+# class TaskSubmissionAdmin(admin.ModelAdmin):
+#     list_filter = ["task"]
+#     list_display = ['task']
